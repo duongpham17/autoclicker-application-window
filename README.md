@@ -35,3 +35,5 @@ localhost:XXXX, ensure file path is correct. Revert back to issue 1. if needed.
     com.apple.quarantine → Gatekeeper has locked it and won’t let it run because it’s
     - xattr -cr path/to/applciation.app
     to then remove and allow it to work again
+
+9. If packaging and theres no .exe file, try building in a terminal with administrator

@@ -69,7 +69,7 @@
   },
   "build": {
     "appId": "com.tungpham.autoclicker",
-    "productName": "AutoClicker",
+    "productName": "Autoclicker",
     "publish": [
       {
         "provider": "github",
@@ -84,17 +84,9 @@
     "directories": {
       "buildResources": "assets/icons"
     },
-    "mac": {
-      "icon": "mac/512x512.icns",
-      "target": "dmg"
-    },
     "win": {
-      "icon": "win/512x512.ico",
+      "icon": "assets/icons/win/512x512.ico",
       "target": "nsis"
-    },
-    "linux": {
-      "icon": "png/512x512.png",
-      "target": "AppImage"
     }
   }
 }
