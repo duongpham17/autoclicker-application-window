@@ -1,0 +1,100 @@
+{
+  "name": "autoclicker",
+  "author": "Tung Pham",
+  "version": "1.0.1",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
+    "dev": "cross-env NODE_ENV=production concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "dist": "cross-env NODE_ENV=production npx electron-builder"
+  },
+  "dependencies": {
+    "@jitsi/robotjs": "^0.6.18",
+    "@reduxjs/toolkit": "^2.9.1",
+    "@stripe/react-stripe-js": "^5.3.0",
+    "@stripe/stripe-js": "^8.2.0",
+    "axios": "^1.12.2",
+    "cross-env": "^10.1.0",
+    "electron-devtools-installer": "^4.0.0",
+    "electron-is-dev": "^3.0.1",
+    "electron-updater": "^6.6.2",
+    "is-admin": "^4.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^4.10.1",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.4",
+    "react-scripts": "^5.0.1",
+    "redux": "^5.0.1",
+    "sass": "^1.93.2",
+    "sudo-prompt": "^9.2.1",
+    "typescript": "^4.9.5",
+    "wait-on": "^9.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "concurrently": "^9.2.1",
+    "electron": "^39.1.1",
+    "electron-builder": "^26.0.12"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "com.tungpham.autoclicker",
+    "productName": "AutoClicker",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "duongpham17",
+        "repo": "autoclicker-application"
+      }
+    ],
+    "files": [
+      "build/**/*",
+      "public/electron.js"
+    ],
+    "directories": {
+      "buildResources": "assets/icons"
+    },
+    "mac": {
+      "icon": "mac/512x512.icns",
+      "target": "dmg"
+    },
+    "win": {
+      "icon": "win/512x512.ico",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "png/512x512.png",
+      "target": "AppImage"
+    }
+  }
+}

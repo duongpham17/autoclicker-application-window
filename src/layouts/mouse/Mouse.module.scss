@@ -1,0 +1,108 @@
+.container{
+    width: 100%;
+    background-color: var(--dark);
+    position: fixed;
+    bottom: -1px;
+    height: 42px;
+    transition: ease-in-out 0.3s;
+    overflow-y: hidden;
+    z-index: 1;
+
+    .controller{
+        position: sticky;
+        background-color: var(--dark);
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        border-top: 2px solid var(--light);
+
+        svg{
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        div{
+            display: flex;
+            align-items: center;
+        }
+
+        button{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            padding: 0.5rem;
+
+            &:hover{
+                opacity: 0.9;
+            }
+        }
+        .mouseButton{
+            width: 100%;
+        }
+
+        .mouseIcon{
+            transform: rotate(90deg);
+            margin-right: 0.5rem;
+        }
+    }
+
+    .terminal{
+        padding: 0.5rem;
+
+        .warning{
+            color: var(--red);
+            border: 1px solid var(--red);
+            padding: 0.5rem;
+        }
+
+        button{
+            display: block;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--primary);
+            width: 100%;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+
+            p{
+                display: flex;
+                align-items: center;
+                svg{
+                    display: flex;
+                    align-items: center;
+                }
+                span{
+                    margin-left: 0.5rem;
+                }
+            }
+            .color{
+                width: 15px;
+                height: 15px;
+                border-radius: 50px;
+                border: 1px solid rgba(76, 76, 76, 0.787);
+            }
+
+            &:hover .copy{
+                display: block;
+            }
+            .copy{
+                display: none;
+            }
+            &:hover{
+                border-color: var(--primary);
+            }
+        }
+    }
+}
+
+.open{
+    height: 250px;
+    overflow-y: auto;
+    &::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+}

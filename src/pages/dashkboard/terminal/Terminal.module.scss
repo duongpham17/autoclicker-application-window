@@ -1,0 +1,39 @@
+.container{
+
+    .header{
+        position: sticky;
+        top: 0;
+        background-color: var(--background);
+        z-index: 1;
+        padding: 0.5rem 0;
+    }
+
+    .logs{
+        height: 100%;
+        padding-bottom: 5rem;
+        padding-top: 1rem;
+        .element{
+            border-left: 3px solid;
+            border-right: 3px solid;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            .doneIcon{
+                color: var(--green);
+            }
+            .closeIcon{
+                color: var(--red);
+            }
+        }
+    }
+
+    .exitBtn{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        width: 100%;
+        button{
+            border: 1px solid var(--light);
+        }
+    }
+}

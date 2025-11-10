@@ -1,0 +1,19 @@
+.container{
+    padding: 2rem;
+    padding-bottom: 5rem;
+
+    h2{
+        border-bottom: 1px solid var(--light);
+        padding: 0.5rem 0;
+    }
+
+    .element{
+        margin-bottom: 1rem;
+        p{
+            padding: 0.4rem 0;
+        }
+        p:nth-child(2){
+            color: var(--text-light);
+        }
+    }
+}

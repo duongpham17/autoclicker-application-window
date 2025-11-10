@@ -1,0 +1,27 @@
+.container{
+    width: 100%;
+
+    .labels{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p{
+            color: var(--text-light);
+        }
+    }
+
+    select {
+        padding: 0.5rem;
+        width: 100%;
+        transition: 0.2s ease-in-out;
+        border: 1px solid var(--light);
+        background-color: var(--light);;
+        outline: none;
+        margin-bottom: 0.5rem;
+
+        &:hover{
+            border: 1px solid var(--primary);
+        }
+    }
+    
+}

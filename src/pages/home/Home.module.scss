@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    justify-content: center;
+    img{
+        width: 300px;
+        height: 300px;
+        mix-blend-mode: screen;
+        animation: move 2s ease-in-out infinite;
+    }
+    a{
+        text-align: center;
+        display: block;
+        padding: 0.5rem;
+        &:hover{
+            color: var(--primary);
+        }
+    }
+
+    @keyframes move{
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(20px); /* move up by 20px */
+        }
+    }
+}

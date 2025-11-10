@@ -1,0 +1,43 @@
+.container{
+    border-radius: 50px;
+    padding: 0.5rem;
+    &:hover{
+        opacity: 0.8;
+    }
+    svg{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.selected{
+    background-color: var(--primary) !important;
+}
+.default{
+    background-color: var(--background);
+}
+.white{
+    background-color: white;
+}
+.black{
+    background-color: black;
+}
+.red{
+    background-color: var(--red);
+    *{color: white;}
+}
+.green{
+    background-color: var(--green);
+    *{color: white;}
+}
+.dark{
+    background-color: var(--dark);
+    *{color: white;}
+}
+.light{
+    background-color: var(--light);
+}
+.primary{
+    background-color: var(--primary);
+    *{ color: white;}
+}

@@ -1,0 +1,103 @@
+/* Loading */ 
+@mixin Loading($width, $height, $border, $color) {
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    border: $border solid $color;
+    border-top-color: transparent;
+    animation: spinner 0.5s linear infinite;
+}
+@keyframes spinner {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.container{
+
+    .warning{
+        button{
+            margin: 0.5rem 0;
+        }
+        .sure{
+            background-color: var(--red);
+            color: white;
+        }
+        .exit{
+            background-color: var(--light);
+            color: white;
+        }
+    }
+    
+    button{
+        border: 1px solid transparent;
+        padding: 0.5rem;
+        width: 100%;
+        transition: 0.2s ease-in-out;
+        border-radius: 5px;
+
+        &:hover{
+            opacity: 0.8;
+        }
+
+        svg{
+            display: block;
+            align-items: center;
+        }   
+        
+        .single{
+            margin: auto;
+        }
+
+        .double{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;    
+        }
+
+        .loading1{
+            @include Loading(15px, 15px, 2px, white);
+            margin: auto;
+        }
+
+        .loading2{
+            @include Loading(15px, 15px, 2px, white);
+        }
+
+    }
+    .selected{
+        background-color: var(--primary) !important;
+    }
+    .margin{
+        margin-bottom: 0.5rem;
+    }
+    .default{
+        background-color: var(--background);
+    }
+    .white{
+        background-color: white;
+    }
+    .black{
+        background-color: black;
+    }
+    .red{
+        background-color: var(--red);
+        *{color: white;}
+    }
+    .green{
+        background-color: var(--green);
+        *{color: white;}
+    }
+    .dark{
+        background-color: var(--dark);
+        *{color: white;}
+    }
+    .light{
+        background-color: var(--light);
+    }
+    .primary{
+        background-color: var(--primary);
+        *{ color: white;}
+    }
+}
