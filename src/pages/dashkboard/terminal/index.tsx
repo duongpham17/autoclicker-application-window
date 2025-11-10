@@ -150,7 +150,7 @@ const Terminal = () => {
     clearInterval(intervalId);
     setIntervalId(null);
     setSeconds(0);
-    setLooped(0);
+    setLooped(1);
   }, [intervalId]);
 
   const onStop = useCallback((): void => {

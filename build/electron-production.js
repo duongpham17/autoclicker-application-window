@@ -1,9 +1,8 @@
 const path = require('path');
 const { app, BrowserWindow, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');
-const { checkAccessibilityAccess, askForAccessibilityAccess}= require('node-mac-permissions');
 const sudo = require('sudo-prompt');
-const isAdmin = require('is-admin');
+const isAdmin = require('is-admin'); // CommonJS style
 
 function start(){
   function createWindow() {
@@ -31,47 +30,29 @@ function start(){
   app.whenReady().then(() => {
     createWindow();
 
-    //MAC PERMISSIONS
-    if(process.platform === "darwin"){
-      setTimeout(() => {
-        try {
-          const hasAccess = checkAccessibilityAccess();
-          if (!hasAccess) {
-            const granted = askForAccessibilityAccess();
-            if (!granted) console.log('Accessibility access required for full functionality.');
-          }
-        } catch (err) {
-          console.error('Error checking macOS accessibility permissions:', err);
-        }
-      }, 2000);
-    };
+    (async () => {
+      const admin = await isAdmin();
+      if(admin){
+        dialog.showMessageBox({
+          type: 'warning',
+          buttons: ['Run as Administrator', 'Cancel'],
+          defaultId: 0,
+          title: 'Administrator Permission Needed',
+          message: 'Some features (like mouse/keyboard control) require Administrator privileges. Restart as Administrator?'
+        })
+      };
 
-    // WIN PERMISSIONS
-    if (process.platform === "win32") {
-      setTimeout(() => {
-        isAdmin().then(admin => {
-          if (!admin) {
-            dialog.showMessageBox({
-              type: 'warning',
-              buttons: ['Run as Administrator', 'Cancel'],
-              defaultId: 0,
-              title: 'Administrator Permission Needed',
-              message: 'Some features (like mouse/keyboard control) require Administrator privileges. Restart as Administrator?'
-            }).then(result => {
-              if (result.response === 0) {
-                const options = { name: 'AutoClicker' };
-                const exePath = process.execPath;
-                const command = `"${exePath}"`;
-                sudo.exec(command, options, err => {
-                  if (err) console.error('Failed to restart as admin:', err);
-                  app.quit();
-                });
-              }
-            });
-          }
+      if(!admin){
+        const options = { name: 'AutoClicker' };
+          const exePath = process.execPath;
+          const command = `"${exePath}"`;
+          sudo.exec(command, options, err => {
+          if (err) console.error('Failed to restart as admin:', err);
+          app.quit();
         });
-      }, 2000);
-    }
+      };
+
+    })();
 
   });
 
