@@ -11,8 +11,6 @@ Before releasing
 npm run dist
 ```
 
-Unsure about process.env.NODE_ENV, for now its set in environment folder as a variable
-
 Issues
 1. Preload.js can fail if a required package has issues. Delete one by one and ensure its loading
 
@@ -25,7 +23,7 @@ Issues
 5. packaged & wont open, try npm run dev, if the app opens its listening on 
 localhost:XXXX, ensure file path is correct. Revert back to issue 1. if needed.
 
-6. Package.json file may require a "homapage": "./", while your there check main is also correct, "public/electron.js"
+6. Package.json file may require a "homepage": "./", while your there check main is also correct, "public/electron.js"
 
 7. Made 2 files one for production and development in electron.js and swtich between the two less prone to bugs but more annoying.
 
