@@ -1,11 +1,20 @@
 import { Dispatch } from 'redux';
-import { ACTIONS, TYPES, IAuthenticationsSignup, IAuthenticationsLogin, AuthenticationsObjectKeys, IAuthenticationsForgot, IAuthenticationsReset } from '@redux/types/authentications';
+import { IUsersApi } from '@redux/types/users';
+import { ACTIONS, TYPES, IAuthenticationsSignup, IAuthenticationsSignin, IAuthenticationsForgot, IAuthenticationsReset } from '@redux/types/authentications';
 import { api } from '@redux/api';
 import { user_authentication } from '@localstorage';
 
-const endpoint = "/authentications"
+const endpoint = "/authentications";
 
-const login = (data: IAuthenticationsLogin) => async (dispatch: Dispatch<ACTIONS>) => {
+// This is a fake update; everything else happens in the backend
+const update = (data: IUsersApi) => async (dispatch: Dispatch<ACTIONS>) => {
+    dispatch({
+        type: TYPES.AUTHENTICATIONS_SIGNIN,
+        payload: data
+    });
+};
+
+const signin = (data: IAuthenticationsSignin) => async (dispatch: Dispatch<ACTIONS>) => {
     try{
         const res = await api.post(`${endpoint}/login`, data);
         dispatch({
@@ -18,6 +27,12 @@ const login = (data: IAuthenticationsLogin) => async (dispatch: Dispatch<ACTIONS
             type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
             payload: {login: error.response.data.message}
         });
+        setTimeout(() => {
+            dispatch({
+                type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
+                payload: {}
+            });
+        }, 5000)
         console.log(error.response.data)
     }
 };
@@ -35,6 +50,12 @@ const signup = (data: IAuthenticationsSignup) => async (dispatch: Dispatch<ACTIO
             type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
             payload: {signup: error.response.data.message}
         });
+        setTimeout(() => {
+            dispatch({
+                type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
+                payload: {}
+            });
+        }, 5000)
         console.log(error.response)
     }
 };
@@ -68,6 +89,12 @@ const reset = (data: IAuthenticationsReset) => async (dispatch: Dispatch<ACTIONS
             type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
             payload: {reset: error.response.data.message}
         });
+        setTimeout(() => {
+            dispatch({
+                type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
+                payload: {}
+            });
+        }, 5000)
         console.log(error.response)
     }
 };
@@ -85,33 +112,39 @@ const forgot = (data: IAuthenticationsForgot) => async (dispatch: Dispatch<ACTIO
             type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
             payload: {forgot: error.response.data.message}
         });
+        setTimeout(() => {
+            dispatch({
+                type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
+                payload: {}
+            });
+        }, 5000)
         console.log(error.response)
     }
 };
 
-const state_errors = (key:string, value: string) => async (dispatch: Dispatch<ACTIONS>) => {
+const stateErrors = (key:string, value: string) => async (dispatch: Dispatch<ACTIONS>) => {
     dispatch({
         type: TYPES.AUTHENTICATIONS_RESPONSE_ERROR,
         payload: {[key]: value}
     });
 };
 
-
-const state_clear = (key:AuthenticationsObjectKeys, value: any) => async (dispatch: Dispatch<ACTIONS>) => {
+const stateClear = () => async (dispatch: Dispatch<ACTIONS>) => {
     dispatch({
         type: TYPES.AUTHENTICATIONS_RESPONSE_CLEAR,
-        payload: { key, value }
+        payload: null
     });
 };
 
 const Authentication = {
-    login,
+    update,
+    signin,
     signup,
     load,
     reset,
     forgot,
-    state_errors,
-    state_clear
+    stateErrors,
+    stateClear
 };
 
 export default Authentication;

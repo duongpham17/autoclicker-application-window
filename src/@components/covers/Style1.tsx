@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './Style1.module.scss';
 import React, {ReactNode, ReactElement} from 'react';
 
@@ -8,7 +6,7 @@ interface Types {
   onClose?: React.MouseEventHandler<HTMLDivElement>
 };
 
-export const Cover = ({children, onClose}: Types) => {
+export const Style1 = ({children, onClose}: Types) => {
 
   return (
     <div className={styles.container} onClick={onClose}>
@@ -17,4 +15,4 @@ export const Cover = ({children, onClose}: Types) => {
   )
 }
 
-export default Cover
+export default Style1

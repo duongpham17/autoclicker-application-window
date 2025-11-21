@@ -15,9 +15,8 @@
   "dependencies": {
     "@jitsi/robotjs": "^0.6.18",
     "@reduxjs/toolkit": "^2.9.1",
-    "@stripe/react-stripe-js": "^5.3.0",
-    "@stripe/stripe-js": "^8.2.0",
     "axios": "^1.12.2",
+    "bson": "^7.0.0",
     "cross-env": "^10.1.0",
     "electron-devtools-installer": "^4.0.0",
     "electron-is-dev": "^3.0.1",
@@ -43,8 +42,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
     "concurrently": "^9.2.1",
     "electron": "^39.1.1",
     "electron-builder": "^26.0.12"
@@ -74,7 +73,7 @@
       {
         "provider": "github",
         "owner": "duongpham17",
-        "repo": "autoclicker-application"
+        "repo": "autoclicker-application-window"
       }
     ],
     "files": [

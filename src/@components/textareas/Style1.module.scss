@@ -1,16 +1,14 @@
 .container{
     width: 100%;
+    margin: 0.5rem 0;
 
     textarea{
         padding: 0.5rem;
         width: 100%;
-        margin-bottom: 0.5rem;
         box-sizing: border-box;
         background-color: var(--light);
-        height: 150px;
         resize: vertical;
         max-height: 400px;
-        min-height: 100px;
         font-family: inherit;
         border: 1px solid var(--light);
 
@@ -23,6 +21,10 @@
         width: 100%;
         margin-bottom: 0.2rem;
         font-weight: 200;
+        color: var(--text-light);
+        span{
+            color: var(--text-light);
+        }
     }
 
     .double{

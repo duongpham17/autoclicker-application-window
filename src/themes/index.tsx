@@ -1,45 +1,37 @@
 import './Themes.scss';
 import {createContext, ReactNode, useLayoutEffect, useState} from 'react';
 import {theme as themeLocalstorage} from '@localstorage';
-import {ThemeTypes} from './Data';
+import {ThemeTypes, ThemeCycle, Styling} from './Data';
 
 export interface PropsTypes {
     theme: ThemeTypes,
     onSetTheme: () => void,
 };
 
-// for consuming in children components, initial state
 export const Context = createContext<PropsTypes>({
-    theme: {
-        name: "night",
-        background: "black",
-    },
+    theme: { name: "purple", background: "141414"},
     onSetTheme: () => null
 });
 
-// Provider in your app
 export const Theme = ({children}: {children: ReactNode}) => {
 
-    const theme_default = {name: "night", background: "#1c1c1c"};
+    const _default_ = Styling.purple;
 
-    const theme_saved: ThemeTypes = themeLocalstorage.get();
+    const saved: ThemeTypes = themeLocalstorage.get();
 
-    const theme_selected = theme_saved || theme_default;
+    const selected = saved || _default_;
 
-    const [theme, setTheme] = useState<ThemeTypes>(theme_selected);
+    const [theme, setTheme] = useState<ThemeTypes>(selected);
 
     useLayoutEffect(() => { 
         document.body.style.background = theme.background;
     }, [theme]);
 
     const onSetTheme = () => {
-        let theme_change = theme_default;
-        if(theme.name === "night")  theme_change =  {name: "ocean",   background: "#1c1c1c"};
-        if(theme.name === "ocean")  theme_change =  {name: "retro",   background: "#1e1e1e"};
-        if(theme.name === "retro")  theme_change =  {name: "matrix",  background: "#000000"};
-        if(theme.name === "matrix") theme_change =  {name: "night",   background: "#141414"};
-        setTheme(theme_change);
-        themeLocalstorage.set(theme_change);
+        const currentIndex = ThemeCycle.findIndex(t => t === theme);
+        const nextTheme = currentIndex === -1 ? _default_ : ThemeCycle[(currentIndex + 1) % ThemeCycle.length];
+        setTheme(nextTheme);
+        themeLocalstorage.set(nextTheme);
     };
 
     const value: PropsTypes = {
@@ -56,4 +48,4 @@ export const Theme = ({children}: {children: ReactNode}) => {
     )
 };
 
-export default Theme
+export default Theme;

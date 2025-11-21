@@ -1,43 +1,24 @@
-import { useContext, Fragment } from 'react';
+import styles from './Theme.module.scss';
+import { useContext } from 'react';
 import { Context } from 'themes'; 
-import Message from '@components/hover/Style1';
-
-import { BsFillMoonFill } from 'react-icons/bs';
-import { FaWater, FaCode } from 'react-icons/fa';
-import { SiRetroarch } from "react-icons/si";
+import { ThemeCycle } from 'themes/Data';
+import Hover from '@components/hover/Style1';
 
 const Theme = () => {
 
-    const {onSetTheme, theme} = useContext(Context);
+    const { onSetTheme, theme } = useContext(Context);
 
     return (
-        <Fragment>
+        <div className={styles.container}>
+            {ThemeCycle.map(el => el.name === theme.name && 
+                <Hover key={el.name} message={"Theme"}>
+                    <button onClick={onSetTheme} className={styles.button}>
+                        <div className={styles.loader} />
+                    </button>
+                </Hover>
+            )}
+        </div>
+    );
+};
 
-            {theme.name === "night" &&
-                <Message message='Dark'>
-                    <button onClick={onSetTheme}><BsFillMoonFill/></button>
-                </Message>
-            }
-
-            {theme.name === "matrix" &&
-                <Message message='Matrix'>
-                    <button onClick={onSetTheme}><FaCode/></button>
-                </Message>
-            }
-
-            {theme.name === "ocean" &&
-                <Message message='Ocean'>
-                    <button onClick={onSetTheme}><FaWater/></button>
-                </Message>
-            }
-            
-            {theme.name === "retro" &&
-                <Message message='Retro'>
-                    <button onClick={onSetTheme}><SiRetroarch/></button>
-                </Message>
-            }
-        </Fragment>
-    )
-}
-
-export default Theme
+export default Theme;

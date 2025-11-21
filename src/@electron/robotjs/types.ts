@@ -8,6 +8,13 @@ interface Props {
 
 export const RobotjsEvents:Props[] = [
     {
+        id: 1000,
+        name: "",
+        robot: "",
+        description: "Select a mouse event",
+        events: ""
+    },
+    {
         id: 0,
         name: "Click mouse",
         robot: "mouseClick",
@@ -21,7 +28,21 @@ export const RobotjsEvents:Props[] = [
         description: "Toggle mouse",
         events: "toggle",
     },
-        {
+    {
+        id: 2,
+        name: "Move mouse and click",
+        robot: "moveMouseAndClick",
+        description: "Move mouse instantly and click",
+        events: "move",
+    },
+    {
+        id: 3,
+        name: "Move mouse smooth and click",
+        robot: "moveMouseSmoothAndClick",
+        description: "Move mouse smooth and click",
+        events: "move",
+    },
+    {
         id: 4,
         name: "Move mouse",
         robot: "moveMouse",
@@ -43,7 +64,7 @@ export const RobotjsEvents:Props[] = [
         events: "move",
     },
     {
-        id: 3,
+        id: 7,
         name: "Pixel color",
         robot: "getPixelColor",
         description: "Detect colors and then perform an action",
@@ -58,20 +79,13 @@ export const RobotjsEvents:Props[] = [
     },
     {
         id: 9,
-        name: "Key toggle",
-        robot: "keyToggle",
-        description: "Hold down or release a key",
-        events: "keyboard toggle",
-    },
-    {
-        id: 10,
         name: "Type string",
         robot: "typeString",
-        description: "auto type words for you",
+        description: "Auto type words for you",
         events: "typing",
     },
     {
-        id: 13,
+        id: 10,
         name: "Restart",
         robot: "restart",
         description: "Restart loop instantly",
@@ -94,7 +108,21 @@ export const RobotjsPixelEvents:Props[] = [
         description: "Toggle mouse",
         events: "toggle",
     },
-        {
+    {
+        id: 2,
+        name: "Move mouse and click",
+        robot: "moveMouseAndClick",
+        description: "Move mouse instantly and click",
+        events: "move",
+    },
+    {
+        id: 3,
+        name: "Move mouse smooth and click",
+        robot: "moveMouseSmoothAndClick",
+        description: "Move mouse smooth and click",
+        events: "move",
+    },
+    {
         id: 4,
         name: "Move mouse",
         robot: "moveMouse",
@@ -116,28 +144,21 @@ export const RobotjsPixelEvents:Props[] = [
         events: "move",
     },
     {
-        id: 8,
+        id: 7,
         name: "Key tap",
         robot: "keyTap",
         description: "Press a single key",
         events: "keyboard",
     },
     {
-        id: 9,
-        name: "Key toggle",
-        robot: "keyToggle",
-        description: "Hold down or release a key",
-        events: "keyboard toggle",
-    },
-    {
-        id: 10,
+        id: 8,
         name: "Type string",
         robot: "typeString",
-        description: "auto type words for you",
+        description: "Auto type words for you",
         events: "typing",
     },
     {
-        id: 13,
+        id: 9,
         name: "Restart",
         robot: "restart",
         description: "Restart loop instantly",

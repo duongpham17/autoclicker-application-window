@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     position: fixed;
-    background-color: rgba(18, 18, 18, 0.788);
+    background-color: rgba(0, 0, 0, 0.864);
     z-index: 10;
     align-items: center;
     justify-content: center;
@@ -33,7 +33,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        border-top: 1px solid var(--light);
+        border-top: 1px solid var(--dark);
         button{
             width: 100%;
             padding: 0.5rem;

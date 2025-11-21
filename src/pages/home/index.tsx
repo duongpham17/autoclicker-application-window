@@ -1,22 +1,35 @@
-
-import { useAppSelector } from '@redux/hooks/useRedux';
 import styles from './Home.module.scss';
+import { useAppSelector } from '@redux/hooks/useRedux';
 import { Link } from 'react-router-dom';
+import Container from '@components/containers/Style1';
+import Search from './search';
 
-const Home = () => {
+const HomePage = () => {
   const {user} = useAppSelector(state => state.authentications)
 
   return (
     <div className={styles.container}>
-      <div>
-        <img src={process.env.PUBLIC_URL + '/logo512.png'} alt="Logo" />
-        {user 
-          ? <Link to="/dashboard">Get started making scripts.</Link>
-          : <Link to="/login">Login and create an account</Link>
-        }
-      </div>
+
+      <section>
+        <Container>
+          {user 
+            ? <Link to="/scripts">Get started making scripts.</Link>
+            : <Link to="/login">Login and create an account</Link>
+          }
+        </Container>
+      </section>
+
+        <section>
+          <Container>
+            {user 
+              ? <Search />
+              : <Link to="/localised">Go to localised scripts</Link>
+            }
+          </Container>
+        </section>
+
     </div>
   )
 }
 
-export default Home
+export default HomePage

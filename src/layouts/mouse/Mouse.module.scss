@@ -9,6 +9,7 @@
     z-index: 1;
 
     .controller{
+        z-index: 1;
         position: sticky;
         background-color: var(--dark);
         top: 0;
@@ -16,17 +17,10 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        border-top: 2px solid var(--light);
+        border-top: 1px solid var(--dark-shade);
 
         svg{
             font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-        }
-
-        div{
-            display: flex;
-            align-items: center;
         }
 
         button{
@@ -62,7 +56,7 @@
         button{
             display: block;
             margin-bottom: 0.5rem;
-            border: 1px solid var(--primary);
+            border: 2px solid var(--primary);
             width: 100%;
             padding: 0.5rem;
             display: flex;

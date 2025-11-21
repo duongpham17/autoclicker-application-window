@@ -19,17 +19,13 @@ const useOpen = <T>({initialState}: Props<T>) => {
         setValues(value);
     };
 
-    const onOpenItems = (value: string) => {
-        const isOpen = array.includes(value);
-        if(isOpen) {
-            const newOpen = array.filter(el => el !== value);
-            setArray(newOpen);
-        } else {
-            setArray((state) => [...state, value])
-        }
+    const onOpenArray = (value: string) => {
+        setArray(state => state.includes(value) 
+            ? state.filter(el => el !== value) 
+            : [...state, value]);
     };
 
-    const onOpenItemsClear = () => {
+    const onArrayClear = () => {
         setArray([]);
     };
 
@@ -42,8 +38,8 @@ const useOpen = <T>({initialState}: Props<T>) => {
         setValues,
         array,
         setArray,
-        onOpenItems,
-        onOpenItemsClear,
+        onOpenArray,
+        onArrayClear,
     }
 };
 

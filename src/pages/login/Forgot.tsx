@@ -6,6 +6,7 @@ import Input from '@components/inputs/Style1';
 import Button from '@components/buttons/Style1';
 import Form from '@components/forms/Style1';
 import Text from '@components/texts/Style1';
+import Container from '@components/containers/Style1';
 
 interface Validation {
   email?: string,
@@ -36,7 +37,7 @@ const Forgot = () => {
 
   const initalState = { email: ""};
 
-  const {values, onChange, onSubmit, loading, validationErrors} = useForm(initalState, callback, validation);
+  const {values, onChange, onSubmit, loading, validationErrors, edited} = useForm(initalState, callback, validation);
 
   async function callback(){
     await dispatch(Authentication.forgot(values));
@@ -46,24 +47,21 @@ const Forgot = () => {
     <Fragment>
       <Form onSubmit={onSubmit}>
 
-        <Input 
-          label1="Email address" 
-          label2={validationErrors.email}
-          error={validationErrors.email} 
-          placeholder="Email to reset password"
-          name="email" 
-          value={values.email} 
-          onChange={onChange} 
-        />
+        <Container>
+          <Input 
+            label1="Email address" 
+            label2={validationErrors.email}
+            error={validationErrors.email} 
+            placeholder="Email to reset password"
+            name="email" 
+            value={values.email} 
+            onChange={onChange} 
+          />
+        </Container>
 
-        {errors.forgot && <><br/><Text message={errors.forgot} color='red'/><br/></>}
+        {errors.forgot && <Container color="red"><Text color='red'>{errors.forgot}</Text></Container>}
 
-        <Button 
-          type="submit" 
-          label1={"Forgot Password"}
-          loading={loading} 
-          color="primary" 
-        />
+        {edited && <Button type="submit" loading={loading} color="primary">Forgot Password</Button>}
 
       </Form>
     </Fragment>

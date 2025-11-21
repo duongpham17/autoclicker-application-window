@@ -1,5 +1,3 @@
-"use client"
-
 import styles from './Style2.module.scss';
 import React, {useEffect} from 'react';
 
@@ -9,7 +7,7 @@ interface Types {
   open: boolean,
 };
 
-export const Cover = ({children, onClose, open}: Types) => {
+export const Style2 = ({children, onClose, open}: Types) => {
 
   useEffect(() => {
       if(open) document.body.classList.add("bodyScrollBar");
@@ -22,11 +20,11 @@ export const Cover = ({children, onClose, open}: Types) => {
         {children}
 
         <div className={styles.bottomButton}>
-          <button onClick={onClose}> CLOSE </button>
+          <button onClick={onClose}> Close </button>
         </div>
       </div>
     </div>
   )
 }
 
-export default Cover
+export default Style2
